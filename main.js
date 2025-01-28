@@ -4,6 +4,7 @@ import authRoutes from './routes/authRoutes.js';
 import postRoutes from './routes/postRoute.js';
 import commentRoutes from './routes/commentRoute.js';
 import dotenv from 'dotenv';
+import swaggerSetup from './swagger.js';
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api', postRoutes);
 app.use('/api', commentRoutes);
 
+swaggerSetup(app)
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
