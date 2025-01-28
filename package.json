@@ -1,0 +1,41 @@
+{
+  "name": "blog-platform",
+  "version": "1.0.0",
+  "description": "A RESTFUL blogging platform that allow users to create, read, update, and delete blog posts and manage comments.",
+  "keywords": [
+    "blog",
+    "comment",
+    "RESTFUL",
+    "API",
+    "express",
+    "mongoose",
+    "JWT",
+    "authentication",
+    "bcrypt"
+  ],
+  "homepage": "https://github.com/Georgeudonkwo/blog-platform#readme",
+  "bugs": {
+    "url": "https://github.com/Georgeudonkwo/blog-platform/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Georgeudonkwo/blog-platform.git"
+  },
+  "license": "MIT",
+  "author": "George Udonkwo",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "blog-platform": "file:",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
