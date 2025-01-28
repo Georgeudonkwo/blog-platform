@@ -17,7 +17,7 @@ const getPosts = async (req, res) => {
     const posts = await Post.find().populate('author', 'username');
     res.json(posts);
   } catch (err) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: `Server error : ${err.message}` });
   }
 };
 
