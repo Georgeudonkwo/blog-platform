@@ -1,5 +1,5 @@
 import express from 'express';
-import { createPost, getPosts } from '../controller/postController.js';
+import { createPost, getPosts,updatePost,deletePost } from '../controller/postController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 
 const router = express.Router();
@@ -44,5 +44,31 @@ router.post('/posts', authMiddleware, createPost);
  *         description: Server error
  */
 router.get('/posts', getPosts);
+/**
+ * @swagger
+ * /api/posts/:postid:
+ *   get:
+ *     summary: update a specified post
+ *     tags: [Posts]
+ *     responses:
+ *       200:
+ *         description: post to be updated
+ *       500:
+ *         description: Server error
+ */
+router.put('/posts/:postId', authMiddleware, updatePost);
+/**
+ * @swagger
+ * /api/posts/:postid:
+ *   get:
+ *     summary: delete a post
+ *     tags: [Posts]
+ *     responses:
+ *       200:
+ *         description: delete an identified post
+ *       500:
+ *         description: Server error
+ */
+router.delete('/posts/:postId', authMiddleware, deletePost);
 
 export default router;
