@@ -1,5 +1,5 @@
 import express from 'express';
-import { register, login } from '../controller/authcontroller.js';
+import { register, login,requestPasswordReset,resetPassword} from '../controller/authcontroller.js';
 
 const router = express.Router();
 /**
@@ -56,5 +56,8 @@ router.post('/register', register);
  *         description: Server error
  */
 router.post('/login', login);
+router.post('/request-password-reset', requestPasswordReset);
+router.post('/reset-password/:token', resetPassword);
+
 
 export default router;
