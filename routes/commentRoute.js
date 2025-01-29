@@ -1,5 +1,5 @@
 import express from 'express';
-import { addComment } from '../controller/commentController.js';
+import { addComment,getComments,deleteComment,editComment } from '../controller/commentController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 
 const router = express.Router();
@@ -29,5 +29,8 @@ const router = express.Router();
  *         description: Server error
  */
 router.post('/comments', authMiddleware, addComment);
+router.get('/posts/:postId/comments', getComments);
+router.delete('/comments/:commentId', authMiddleware, deleteComment);
+router.put('/comments/:commentId', authMiddleware, editComment);
 
 export default router;
