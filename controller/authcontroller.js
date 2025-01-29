@@ -63,7 +63,7 @@ const login = async (req, res) => {
     user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
     await user.save();
 
-    await sendPasswordResetEmail(user.email, resetToken);
+    await sendPasswordResetEmail(user, resetToken);
 
     res.status(200).json({ message: 'Password reset email sent' });
   } catch (err) {
