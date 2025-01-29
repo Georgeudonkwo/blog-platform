@@ -9,6 +9,7 @@ This is a **RESTFUL** application that allow *user* to *create*, *read*, and *de
 5. *bcryptjs*
 6. *swagger-jsdoc*
 7. *swagger-ui-express*
+8. *nodemailer*
 
 ## Features Implemented
 1. *User Authetication*

@@ -20,5 +20,30 @@ const getPosts = async (req, res) => {
     res.status(500).json({ message: `Server error : ${err.message}` });
   }
 };
+ const updatePost = async (req, res) => {
+  const { postId } = req.params;
+  const { title, content } = req.body;
 
-export { createPost, getPosts };
+  try {
+    const post = await Post.findById(postId);
+    if (!post) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
+
+    // Check if the user is the author of the post
+    if (post.author.toString() !== req.user.id) {
+      return res.status(403).json({ message: 'You are not authorized to update this post' });
+    }
+
+    post.title = title || post.title;
+    post.content = content || post.content;
+    post.updatedAt = Date.now();
+
+    await post.save();
+
+    res.status(200).json({ message: 'Post updated successfully', post });
+  } catch (err) {
+    res.status(500).json({ message: 'Server error', error: err.message });
+  }
+};
+export { createPost, getPosts,updatePost };
