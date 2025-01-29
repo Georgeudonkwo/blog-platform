@@ -24,9 +24,9 @@ router.get('/users/:userId', authMiddleware, viewProfile);
 
 /**
  * @swagger
- * /api/users/:userId/follow:
+ * /api/users/:userId:
  *   put:
- *     summary: update user profile
+ *     summary: allow users to update their profile information
  *     tags: [user]
  *     responses:
  *       201:
@@ -41,7 +41,7 @@ router.put('/users/:userId', authMiddleware, updateProfile);
  * /api/users/:userId/follow:
  *   post:
  *     summary: add a follower
- *     tags: [Posts]
+ *     tags: [user]
  *     security:
  *       - bearerAuth: []
  *     requestBody:

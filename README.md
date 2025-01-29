@@ -16,3 +16,17 @@ This is a **RESTFUL** application that allow *user* to *create*, *read*, and *de
 2. *Blog Post Management*
 3. *Comments System*
 4. *User Profile*
+
+## Test
+1. if you are using the swagger endpoint. then navigate to the path **blog-api-docs** on your *localhost*
+set the port in the server section of the swagger doc option as follows.
+```servers: [
+      {
+        url: 'http://localhost:50555/api',
+        description: 'Development server',
+      },
+    ],
+    ```
+    I am using port *50555*, change it to your preferred value.
+    
+2. You can also use Postman, curl etc
