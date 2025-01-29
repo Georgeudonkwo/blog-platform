@@ -47,7 +47,7 @@ router.get('/posts', getPosts);
 /**
  * @swagger
  * /api/posts/:postid:
- *   get:
+ *   put:
  *     summary: update a specified post
  *     tags: [Posts]
  *     responses:
@@ -60,7 +60,7 @@ router.put('/posts/:postId', authMiddleware, updatePost);
 /**
  * @swagger
  * /api/posts/:postid:
- *   get:
+ *   delete:
  *     summary: delete a post
  *     tags: [Posts]
  *     responses:

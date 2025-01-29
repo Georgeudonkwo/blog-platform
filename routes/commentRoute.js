@@ -29,8 +29,44 @@ const router = express.Router();
  *         description: Server error
  */
 router.post('/comments', authMiddleware, addComment);
+/**
+ * @swagger
+ * /api/posts/:postId/comments:
+ *   get:
+ *     summary: retrieve a comment
+ *     tags: [comments]
+ *     responses:
+ *       201:
+ *         description: comment successfully retrieved
+ *       500:
+ *         description: Server error
+ */
 router.get('/posts/:postId/comments', getComments);
+/**
+ * @swagger
+ * /api/comments/:commentId:
+ *   delete:
+ *     summary: delete a comment
+ *     tags: [comments]
+ *     responses:
+ *       201:
+ *         description: comment successfully deleted
+ *       500:
+ *         description: Server error
+ */
 router.delete('/comments/:commentId', authMiddleware, deleteComment);
+/**
+ * @swagger
+ * /api/comments/:commentId:
+ *   put:
+ *     summary: update a comment
+ *     tags: [comments]
+ *     responses:
+ *       201:
+ *         description: comment successfully updated
+ *       500:
+ *         description: Server error
+ */
 router.put('/comments/:commentId', authMiddleware, editComment);
 
 export default router;
