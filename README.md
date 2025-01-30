@@ -1,5 +1,5 @@
 # blog-platform
-This is a **RESTFUL** application that allow *user* to *create*, *read*, and *delete* blog **post** and manage **comment**.
+This is a **RESTFUL** application that allow *user* to *create*, *read*, and *delete* blog **post** and manage **comment** as well as update **profile**.
 
 ## Key technologies used are:
 1. *express.js*
@@ -17,6 +17,10 @@ This is a **RESTFUL** application that allow *user* to *create*, *read*, and *de
 3. *Comments System*
 4. *User Profile*
 
+## Answer to Question 1 :
+the answer to question is attached as a *downloadable pdf in the public/docs directory*.
+the file can be downloaded from the browser using the url:**http:/localhost:50555/docs/question1.pdf**. change the port number accordingly.
+
 ## Test
 1. if you are using the swagger endpoint. then navigate to the path **blog-api-docs** on your *localhost*, that is
 swagger endpointis **http:localhost:port/blog-api-docs**
@@ -31,3 +35,5 @@ set the port in the server section of the swagger doc option as follows.
     I am using port *50555*, change it to your preferred value.
     
 2. You can also use Postman, curl etc
+
+
