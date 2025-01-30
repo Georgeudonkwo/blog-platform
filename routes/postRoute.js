@@ -1,5 +1,8 @@
 import express from 'express';
-import { createPost, getPosts,updatePost,deletePost } from '../controller/postController.js';
+import { createPost, 
+    getPosts,updatePost,
+    deletePost,
+    filterAndSearchPost } from '../controller/postController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 
 const router = express.Router();
@@ -95,5 +98,76 @@ router.put('/posts/:postId', authMiddleware, updatePost);
  *         description: Server error
  */
 router.delete('/posts/:postId', authMiddleware, deletePost);
+/**
+ * @swagger
+ * /posts:
+ *   get:
+ *     summary: Get all posts with searching, filtering, and pagination
+ *     tags: [Posts]
+ *     parameters:
+ *       - in: query
+ *         name: title
+ *         schema:
+ *           type: string
+ *         description: Filter posts by title (case-insensitive search)
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           default: 10
+ *         description: Limit the number of posts returned per page
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           default: 1
+ *         description: Page number for pagination
+ *       - in: query
+ *         name: search
+ *         schema:
+ *           type: string
+ *         description: Full-text search across title and content
+ *     responses:
+ *       200:
+ *         description: List of posts with filtering, sorting, and pagination applied
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 count:
+ *                   type: integer
+ *                   example: 5
+ *                 page:
+ *                   type: integer
+ *                   example: 1
+ *                 limit:
+ *                   type: integer
+ *                   example: 10
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/Post'
+ *       500:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
+ *                 message:
+ *                   type: string
+ *                   example: Server error
+ *                 error:
+ *                   type: string
+ *                   example: Error message
+ */
+router.get('/posts', filterAndSearchPost);
 
 export default router;

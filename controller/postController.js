@@ -67,4 +67,46 @@ const getPosts = async (req, res) => {
     res.status(500).json({ message: 'Server error', error: err.message });
   }
 };
-export { createPost, getPosts,updatePost,deletePost };
+
+// Get all posts with filtering and search
+const filterAndSearchPost = async (req, res) => {
+  try {
+    // Extract query parameters
+    const { title, limit, page } = req.query;
+
+    // Create a query object for filtering
+    const query = {};
+
+    // Filter by title (case-insensitive search)
+    if (title) {
+      query.title = { $regex: title, $options: 'i' }; // Case-insensitive search
+    }
+    if (req.query.search) {
+      query.$text = { $search: req.query.search };
+    }
+
+    // Execute the query
+    let result = Post.find(query);
+    // Pagination
+    const pageNumber = parseInt(page, 10) || 1; // Default to page 1
+    const limitNumber = parseInt(limit, 10) || 10; // Default to 10 posts per page
+    const skip = (pageNumber - 1) * limitNumber;
+
+    result = result.skip(skip).limit(limitNumber);
+
+    // Execute the final query
+    const posts = await result;
+
+    // Send response
+    res.status(200).json({
+      success: true,
+      count: posts.length,
+      page: pageNumber,
+      data: posts,
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Server error', error: err.message });
+  }
+};
+
+export { createPost, getPosts,updatePost,deletePost,filterAndSearchPost };
