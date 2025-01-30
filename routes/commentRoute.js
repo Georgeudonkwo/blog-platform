@@ -20,6 +20,8 @@ const router = express.Router();
  *             properties:
  *               content:
  *                 type: string
+ *               postid:
+ *                 type: string
  *     responses:
  *       201:
  *         description: comment created successfully
@@ -37,7 +39,7 @@ router.post('/comments', authMiddleware, addComment);
  *     tags: [comments]
  * 
  *     parameters:
- *       - name: postid
+ *       - name: postId
  *         in: path
  *         required: true
  *         description: The MongoDB ObjectId of the post.
@@ -52,7 +54,7 @@ router.post('/comments', authMiddleware, addComment);
 router.get('/posts/:postId/comments', getComments);
 /**
  * @swagger
- * /api/comments/{commentId}:
+ * /api/comments/{commentid}:
  *   delete:
  *     summary: delete a comment
  *     tags: [comments]
@@ -69,10 +71,10 @@ router.get('/posts/:postId/comments', getComments);
  *       500:
  *         description: Server error
  */
-router.delete('/comments/:commentId', authMiddleware, deleteComment);
+router.delete('/comments/:commentid', authMiddleware, deleteComment);
 /**
  * @swagger
- * /api/comments/{commentId}:
+ * /api/comments/{commentid}:
  *   put:
  *     summary: update a comment
  *     tags: [comments]
@@ -80,7 +82,7 @@ router.delete('/comments/:commentId', authMiddleware, deleteComment);
  *       - name: commentid
  *         in: path
  *         required: true
- *         description: The MongoDB ObjectId of the post.
+ *         description: The MongoDB ObjectId of the comment.
  *         schema:
  *           type: string
  *     requestBody:
@@ -98,6 +100,6 @@ router.delete('/comments/:commentId', authMiddleware, deleteComment);
  *       500:
  *         description: Server error
  */
-router.put('/comments/:commentId', authMiddleware, editComment);
+router.put('/comments/:commentid', authMiddleware, editComment);
 
 export default router;

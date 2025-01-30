@@ -60,7 +60,7 @@ const getPosts = async (req, res) => {
       return res.status(403).json({ message: 'You are not authorized to delete this post' });
     }
 
-    await post.remove();
+    await post.deleteOne({_id:postId});
 
     res.status(200).json({ message: 'Post deleted successfully' });
   } catch (err) {
@@ -73,7 +73,7 @@ const filterAndSearchPost = async (req, res) => {
   try {
     // Extract query parameters
     const { title, limit, page } = req.query;
-
+console.log(req.query);
     // Create a query object for filtering
     const query = {};
 

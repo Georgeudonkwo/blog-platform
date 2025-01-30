@@ -16,7 +16,7 @@ const router = express.Router();
  *     tags: [user]
  * 
  *     parameters:
- *       - name: userid
+ *       - name: userId
  *         in: path
  *         required: true
  *         description: The MongoDB ObjectId of the post.
@@ -37,7 +37,7 @@ router.get('/users/:userId', authMiddleware, viewProfile);
  *     summary: allow users to update their profile information
  *     tags: [user]
  *     parameters:
- *       - name: userid
+ *       - name: userId
  *         in: path
  *         required: true
  *         description: The MongoDB ObjectId of the post.
@@ -72,7 +72,7 @@ router.put('/users/:userId', authMiddleware, updateProfile);
  *     security:
  *       - bearerAuth: []
  *     parameters:
- *       - name: userid
+ *       - name: userId
  *         in: path
  *         required: true
  *         description: The MongoDB ObjectId of the post.
