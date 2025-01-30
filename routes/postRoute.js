@@ -46,23 +46,48 @@ router.post('/posts', authMiddleware, createPost);
 router.get('/posts', getPosts);
 /**
  * @swagger
- * /api/posts/:postid:
+ * /api/posts/{postid}:
  *   put:
- *     summary: update a specified post
+ *     summary: Update a specified post
  *     tags: [Posts]
+ *     parameters:
+ *       - name: postid
+ *         in: path
+ *         required: true
+ *         description: The MongoDB ObjectId of the post.
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *               content:
+ *                 type: string
  *     responses:
  *       200:
- *         description: post to be updated
+ *         description: Post updated successfully
  *       500:
  *         description: Server error
  */
 router.put('/posts/:postId', authMiddleware, updatePost);
 /**
  * @swagger
- * /api/posts/:postid:
+ * /api/posts/{postid}:
  *   delete:
  *     summary: delete a post
  *     tags: [Posts]
+ *     parameters:
+ *       - name: postid
+ *         in: path
+ *         required: true
+ *         description: The MongoDB ObjectId of the post.
+ *         schema:
+ *           type: string
  *     responses:
  *       200:
  *         description: delete an identified post

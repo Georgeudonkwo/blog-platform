@@ -10,10 +10,18 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/users/:userId:
+ * /api/users/{userId}:
  *   get:
  *     summary: view a user
  *     tags: [user]
+ * 
+ *     parameters:
+ *       - name: userid
+ *         in: path
+ *         required: true
+ *         description: The MongoDB ObjectId of the post.
+ *         schema:
+ *           type: string
  *     responses:
  *       201:
  *         description: user successfully retrieved
@@ -24,10 +32,29 @@ router.get('/users/:userId', authMiddleware, viewProfile);
 
 /**
  * @swagger
- * /api/users/:userId:
+ * /api/users/{userId}:
  *   put:
  *     summary: allow users to update their profile information
  *     tags: [user]
+ *     parameters:
+ *       - name: userid
+ *         in: path
+ *         required: true
+ *         description: The MongoDB ObjectId of the post.
+ *         schema:
+ *           type: string
+ * 
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *               email:
+ *                 type: string
  *     responses:
  *       201:
  *         description: user successfully updated
@@ -38,12 +65,19 @@ router.put('/users/:userId', authMiddleware, updateProfile);
 
 /**
  * @swagger
- * /api/users/:userId/follow:
+ * /api/users/{userId}/follow:
  *   post:
  *     summary: add a follower
  *     tags: [user]
  *     security:
  *       - bearerAuth: []
+ *     parameters:
+ *       - name: userid
+ *         in: path
+ *         required: true
+ *         description: The MongoDB ObjectId of the post.
+ *         schema:
+ *           type: string
  *     requestBody:
  *       required: true
  *       content:

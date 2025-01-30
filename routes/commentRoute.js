@@ -31,10 +31,18 @@ const router = express.Router();
 router.post('/comments', authMiddleware, addComment);
 /**
  * @swagger
- * /api/posts/:postId/comments:
+ * /api/posts/{postId}/comments:
  *   get:
  *     summary: retrieve a comment
  *     tags: [comments]
+ * 
+ *     parameters:
+ *       - name: postid
+ *         in: path
+ *         required: true
+ *         description: The MongoDB ObjectId of the post.
+ *         schema:
+ *           type: string
  *     responses:
  *       201:
  *         description: comment successfully retrieved
@@ -44,10 +52,17 @@ router.post('/comments', authMiddleware, addComment);
 router.get('/posts/:postId/comments', getComments);
 /**
  * @swagger
- * /api/comments/:commentId:
+ * /api/comments/{commentId}:
  *   delete:
  *     summary: delete a comment
  *     tags: [comments]
+ *     parameters:
+ *       - name: commentid
+ *         in: path
+ *         required: true
+ *         description: The MongoDB ObjectId of the post.
+ *         schema:
+ *           type: string
  *     responses:
  *       201:
  *         description: comment successfully deleted
@@ -57,10 +72,26 @@ router.get('/posts/:postId/comments', getComments);
 router.delete('/comments/:commentId', authMiddleware, deleteComment);
 /**
  * @swagger
- * /api/comments/:commentId:
+ * /api/comments/{commentId}:
  *   put:
  *     summary: update a comment
  *     tags: [comments]
+ *     parameters:
+ *       - name: commentid
+ *         in: path
+ *         required: true
+ *         description: The MongoDB ObjectId of the post.
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               content:
+ *                 type: string
  *     responses:
  *       201:
  *         description: comment successfully updated
