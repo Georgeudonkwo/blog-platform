@@ -22,6 +22,9 @@ the answer to question 1 is attached as a *downloadable pdf in the public/docs d
 the file can be downloaded from the browser using the url:**http:/localhost:50555/docs/question1.pdf**. change the port number accordingly.
 
 ## Test
+if your are a new user, register with your user information through the **register** endpoint and obtain your authorisation **token**.
+if you are an existing user, then login into the application throgh the **login** endpoint by providing your **email** and **password** and obtain your **authorisation token**.
+include the authorisation token in the header of your requested to protected APIs.
 1. if you are using the swagger endpoint. then navigate to the path **blog-api-docs** on your *localhost*, that is
 swagger endpointis **http:localhost:port/blog-api-docs**
 set the port in the server section of the swagger doc option as follows.

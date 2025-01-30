@@ -21,11 +21,11 @@ const getPosts = async (req, res) => {
   }
 };
  const updatePost = async (req, res) => {
-  const { postId } = req.params;
+  const { postid } = req.params;
   const { title, content } = req.body;
 
   try {
-    const post = await Post.findById(postId);
+    const post = await Post.findById(postid);
     if (!post) {
       return res.status(404).json({ message: 'Post not found' });
     }
@@ -47,10 +47,10 @@ const getPosts = async (req, res) => {
   }
 };
  const deletePost = async (req, res) => {
-  const { postId } = req.params;
+  const { postid } = req.params;
 
   try {
-    const post = await Post.findById(postId);
+    const post = await Post.findById(postid);
     if (!post) {
       return res.status(404).json({ message: 'Post not found' });
     }
@@ -60,7 +60,7 @@ const getPosts = async (req, res) => {
       return res.status(403).json({ message: 'You are not authorized to delete this post' });
     }
 
-    await post.deleteOne({_id:postId});
+    await post.deleteOne({_id:postid});
 
     res.status(200).json({ message: 'Post deleted successfully' });
   } catch (err) {

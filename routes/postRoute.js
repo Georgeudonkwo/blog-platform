@@ -77,7 +77,7 @@ router.get('/posts', getPosts);
  *       500:
  *         description: Server error
  */
-router.put('/posts/:postId', authMiddleware, updatePost);
+router.put('/posts/:postid', authMiddleware, updatePost);
 /**
  * @swagger
  * /api/posts/{postid}:
@@ -97,7 +97,7 @@ router.put('/posts/:postId', authMiddleware, updatePost);
  *       500:
  *         description: Server error
  */
-router.delete('/posts/:postId', authMiddleware, deletePost);
+router.delete('/posts/:postid', authMiddleware, deletePost);
 /**
  * @swagger
  * /posts:
