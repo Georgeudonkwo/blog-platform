@@ -18,7 +18,7 @@ This is a **RESTFUL** application that allow *user* to *create*, *read*, and *de
 4. *User Profile*
 
 ## Answer to Question 1 :
-the answer to question is attached as a *downloadable pdf in the public/docs directory*.
+the answer to question 1 is attached as a *downloadable pdf in the public/docs directory*.
 the file can be downloaded from the browser using the url:**http:/localhost:50555/docs/question1.pdf**. change the port number accordingly.
 
 ## Test

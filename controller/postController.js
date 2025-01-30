@@ -68,7 +68,7 @@ const getPosts = async (req, res) => {
   }
 };
 
-// Get all posts with filtering and search
+
 const filterAndSearchPost = async (req, res) => {
   try {
     // Extract query parameters
