@@ -9,10 +9,12 @@ import nodemailer from 'nodemailer';
   });
 */
 export const sendPasswordResetEmail = async (user, resetToken) => {
-  const resetUrl = `http://localhost:5000/api/auth/reset-password/${resetToken}`;
+  const resetUrl = `http://localhost:${process.env.PSWRESETPORT}/api/auth/reset-password/${resetToken}`;
 const {username,email,password}=user;
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: "smtp.gmail.com",
+    port: 465, // Use 587 if using TLS
+    secure: true, // Use `false` for port 587
     auth: {
       user: username,
       pass: password,

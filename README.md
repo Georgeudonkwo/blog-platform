@@ -28,11 +28,13 @@ include the authorisation token in the header of your requested to protected API
 
 **NOTE:** 
 To use the password reset api, then follow this instruction:
+Access the endpoint: **/api/auth/request-password-reset**. the password to use in this endpoint is the App password.
 Go to your Google Account's security settings:**https://myaccount.google.com/security**
 Look for **App passwords** (you might need to enable 2-Step Verification first if you haven't already).
 Create a new App Password specifically for "Mail" or a custom name like "Nodemailer."
 **Important: Copy the generated App Password immediately. You won't be able to see it again.**
 Replace your regular Gmail password with the App Password when testing the endpoint.
+You will get an email with a link to where you can reset your password.
 
 1. if you are using the swagger endpoint. then navigate to the path **blog-api-docs** on your *localhost*, that is
 swagger endpointis **http:localhost:port/blog-api-docs**

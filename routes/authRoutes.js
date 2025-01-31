@@ -84,10 +84,17 @@ router.post('/login', login);
 router.post('/request-password-reset', requestPasswordReset);
 /**
  * @swagger
- * /api/auth/reset-password/:token:
+ * /api/auth/reset-password/{token}:
  *   post:
  *     summary: use token to set new password
  *     tags: [Auth]
+ *     parameters:
+ *       - name: token
+ *         in: path
+ *         required: true
+ *         description: Generated token from the "request-password-reset" route.
+ *         schema:
+ *           type: string
  *     requestBody:
  *       required: true
  *       content:
@@ -95,8 +102,6 @@ router.post('/request-password-reset', requestPasswordReset);
  *           schema:
  *             type: object
  *             properties:
- *               email:
- *                 type: string
  *               password:
  *                 type: string
  *     responses:
