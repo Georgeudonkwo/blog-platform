@@ -25,6 +25,14 @@ the file can be downloaded from the browser using the url:**http:/localhost:5055
 if your are a new user, register with your user information through the **register** endpoint and obtain your authorisation **token**.
 if you are an existing user, then login into the application throgh the **login** endpoint by providing your **email** and **password** and obtain your **authorisation token**.
 include the authorisation token in the header of your requested to protected APIs.
+## NOTE: 
+  To use the password reset api, then follow this instruction:
+Go to your Google Account's security settings:**https://myaccount.google.com/security**
+Look for **App passwords** (you might need to enable 2-Step Verification first if you haven't already).
+Create a new App Password specifically for "Mail" or a custom name like "Nodemailer."
+## Important: Copy the generated App Password immediately. You won't be able to see it again.
+Replace your regular Gmail password with the App Password when testing the endpoint.
+
 1. if you are using the swagger endpoint. then navigate to the path **blog-api-docs** on your *localhost*, that is
 swagger endpointis **http:localhost:port/blog-api-docs**
 set the port in the server section of the swagger doc option as follows.

@@ -1,19 +1,19 @@
-import User from '../models/user.js';
+import user from '../models/user.js';
 
  const viewProfile = async (req, res) => {
   const { userId } = req.params;
 
   try {
-    const user = await User.findById(userId)
+    const User = await user.findById(userId)
       .select('-password') // Exclude the password field
       .populate('followers', 'username') // Populate followers with usernames
       .populate('following', 'username'); // Populate following with usernames
 
-    if (!user) {
+    if (!User) {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    res.status(200).json(user);
+    res.status(200).json(User);
   } catch (err) {
     res.status(500).json({ message: 'Server error', error: err.message });
   }
@@ -23,21 +23,21 @@ import User from '../models/user.js';
     const { username, email } = req.body;
   
     try {
-      const user = await User.findById(userId);
-      if (!user) {
+      const User = await user.findById(userId);
+      if (!User) {
         return res.status(404).json({ message: 'User not found' });
       }
   
       // Check if the user is updating their own profile
-      //if (user._id.toString() !== req.user.id) {
-       // return res.status(403).json({ message: 'You are not authorized to update this profile' });
-      //}
+      if (User._id.toString() !== req.user.id) {
+        return res.status(403).json({ message: 'You are not authorized to update this profile' });
+      }
   
       // Update the profile fields
-      user.username = username || user.username;
-      user.email = email || user.email;
+      User.username = username || User.username;
+      User.email = email || User.email;
   
-      await user.save();
+      await User.save();
   
       res.status(200).json({ message: 'Profile updated successfully', user });
     } catch (err) {
@@ -49,8 +49,8 @@ import User from '../models/user.js';
     const currentUserId = req.user.id; // ID of the logged-in user
   
     try {
-      const userToFollow = await User.findById(userId);
-      const currentUser = await User.findById(currentUserId);
+      const userToFollow = await user.findById(userId);
+      const currentUser = await user.findById(currentUserId);
   
       if (!userToFollow || !currentUser) {
         return res.status(404).json({ message: 'User not found' });
